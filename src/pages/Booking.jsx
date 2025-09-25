@@ -1,3 +1,4 @@
+import BookingManager from "../components/pages/booking/BookingManager";
 
  
 
@@ -13,6 +14,7 @@ export default function Booking() {
       //Keeps the state of the booking
 
       //Take Booking Manager
+      <BookingManager />
       //Stepper
       //Returns Confirmation if confirmation
 
