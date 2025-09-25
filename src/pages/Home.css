@@ -1,0 +1,43 @@
+.overlay-container {
+  position: relative;          
+  display: flex;
+  flex-direction: column;      
+  justify-content: center;     
+  align-items: center;         
+  min-height: 100vh;           /* take full viewport height */
+  text-align: center;          /* center text alignment */
+  color: white;
+  padding: 2rem;
+}
+
+.logo {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: 2rem;
+  max-width: 600px;
+  margin-bottom: 2rem; /* space before button */
+}
+
+.button {
+  margin: 1rem 0;
+  color: white;
+  border: 1px solid white;
+  border-radius: 25px;
+  padding: 10px 20px;
+  background-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
