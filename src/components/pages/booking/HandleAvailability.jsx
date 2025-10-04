@@ -8,7 +8,7 @@ export default async function HandleAvailability(formData, setError, setTables, 
       `http://localhost:5240/api/reservations/available-tables?date=${formData.date}&startTime=${formData.time}&partySize=${formData.numberOfGuests}`
     );
 
-    if (!response.ok) throw new Error("Failed to fetch available tables");
+    if (!response.ok) throw new Error("Failed to fetch available tables. Are you sure you have entered the correct details?");
 
     const data = await response.json();
     setTables(data);

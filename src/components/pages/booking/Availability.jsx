@@ -1,44 +1,41 @@
-import '/src/pages/Booking.css'
-
-
 export default function Availability({ formData, setFormData }) {
 
   return (
     <>
-      <div className="form-container">
+      <div className="availability-container">
 
-        <div className="form-input">
-          <label className="form-label"> Select a Date</label>
+        <label className="label">Date</label>
         <input 
         type="date" 
+        className="input"
         placeholder="Select Date" 
         value={formData.date} 
         onChange = {(e) => setFormData({...formData, date: e.target.value})}
         />
-        </div>
 
-        <div className="form-input">
+        
+        <label className="label">Time</label>
         <input 
         type="time" 
+        className="input"
         placeholder="Select Time" 
         value={formData.time} 
         onChange={(e) => setFormData({...formData, time: e.target.value})}
         />
-        </div>
 
-        <div className="form-input">
+
+        <label className="label">Number Of Guests</label>
         <input
           type="number"
+          className="input"
+
           placeholder="Number of Guests"
           value={formData.numberOfGuests}
           onChange={(e) => setFormData(
             {...formData, 
               numberOfGuests:e.target.value
             })}
-            
         />
-        </div>
-
       </div>
     </>
   );

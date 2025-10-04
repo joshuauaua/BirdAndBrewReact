@@ -106,3 +106,55 @@
   background-color: green;
   border-radius: 4px;
 }
+
+
+
+
+/* Input Styling */
+.group {
+  position: relative;
+ }
+ 
+ .input {
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 200px;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  background: transparent;
+ }
+ 
+ .input:focus {
+  outline: none;
+ }
+
+
+ .highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+ }
+ 
+ .input:focus ~ .highlight {
+  animation: inputHighlighter 0.3s ease;
+ }
+ 
+ @keyframes inputHighlighter {
+  from {
+   background: #ffffff;
+  }
+ 
+  to {
+   width: 0;
+   background: transparent;
+  }
+ }
+
+.label{
+  margin-top: px;
+}
