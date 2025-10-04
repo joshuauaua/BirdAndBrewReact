@@ -8,6 +8,7 @@ import Confirmation from "../components/pages/booking/Confirmation";
 import DynamicFooter from "../components/pages/booking/DynamicFooter";
 import ConfirmationModal from "../components/pages/booking/ConfirmationModal";
 import HandleGuest from "../components/pages/booking/HandleGuest";
+import Background from "../components/pages/home/Background"
 
 export default function Booking() {
   const [tables, setTables] = useState([]);
@@ -67,6 +68,10 @@ export default function Booking() {
   };
 
   return (
+
+    <>
+
+    <Background />
     <div className="form-wrapper">
       <div className="form-container">
         <div className="form-header">
@@ -95,5 +100,6 @@ export default function Booking() {
         message={modalMessage}
       />
     </div>
+    </>
   );
 }

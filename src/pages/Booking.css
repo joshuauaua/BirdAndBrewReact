@@ -16,8 +16,9 @@
   width: 400px;
   max-width: 90%;
   max-height: 80vh;     
-  padding: 2rem;
-  background-color: rgb(255, 84, 84);
+  padding: 4rem;
+  background-color: rgb(244, 70, 70);
+  opacity: 0.8;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
