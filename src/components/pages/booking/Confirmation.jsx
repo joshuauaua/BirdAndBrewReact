@@ -1,4 +1,4 @@
-import './Form.css'
+import '/src/pages/Booking.css'
 
 
 export default function Confirmation ({formData, setFormData}) {

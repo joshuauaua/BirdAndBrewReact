@@ -1,27 +1,26 @@
-export default function SelectTable({
-  formData,
-  setFormData,
-  tables,
-}) {
+
+
+export default function SelectTable({ tables, formData, setFormData }) {
+  const handleSelect = (table) => {
+    setFormData(prev => ({
+      ...prev,
+      tableId: table.id,
+      tableNumber: table.tableNumber
+    }));
+  };
+
   return (
-    <div className="form-container">
-      <select
-        value={formData.tableNumber}
-        onChange={(e) =>
-          setFormData({ ...formData, tableNumber: e.target.value })
-        }
-      >
-        <option value="">Select a table</option>
-        {tables && tables.length > 0 ? (
-          tables.map((table) => (
-            <option key={table.id} value={table.id}>
-              Table {table.tableNumber} (Seats {table.capacity})
-            </option>
-          ))
-        ) : (
-          <option disabled>No tables available</option>
-        )}
-      </select>
+    <div className="table-select">
+      <h3>Select a Table</h3>
+      {tables.map(table => (
+        <button
+          key={table.id}
+          className={`table-btn ${formData.tableId === table.id ? "selected" : ""}`}
+          onClick={() => handleSelect(table)}
+        >
+          Table {table.tableNumber} — Seats {table.capacity}
+        </button>
+      ))}
     </div>
   );
 }
