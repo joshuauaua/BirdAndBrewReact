@@ -1,12 +1,28 @@
-# React + Vite
+# Bird & Brew Reservation System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **Bird & Brew**, a restaurant reservation web application built with **React** for the frontend and a **.NET backend** API. This project allows users to:
 
-Currently, two official plugins are available:
+- Check table availability for a specific date and time.
+- Select their preferred table.
+- Enter personal information.
+- Confirm their booking with a fun confirmation modal 🎉.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Multi-step booking form
+- Real-time table availability check
+- Customer verification (checks if customer exists before creating reservation)
+- Confirmation modal with visual feedback
+- Responsive design for desktop and mobile
+
+---
+
+## Tech Stack
+
+- **Frontend:** React, CSS  
+- **Backend:** .NET API (C#), Entity Framework, SQL Server  
+- **Other:** Fetch API for client-server communication
+
+---
