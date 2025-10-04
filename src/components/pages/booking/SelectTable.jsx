@@ -16,8 +16,6 @@ export default function SelectTable({ tables, formData, setFormData }) {
 
   return (
     <div className="table-select">
-      <h3>Select a Table</h3>
-
       <select
         className="table-dropdown"
         value={formData.tableId || ""}

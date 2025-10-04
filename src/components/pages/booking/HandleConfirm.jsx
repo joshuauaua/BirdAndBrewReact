@@ -1,5 +1,4 @@
-
-export default async function HandleConfirm(formData, customerId, setError, setPage) {
+export default async function HandleConfirm(formData, customerId, setError) {
   setError("");
 
   try {
@@ -7,21 +6,23 @@ export default async function HandleConfirm(formData, customerId, setError, setP
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        numberOfGuests: formData.numberOfGuests,
+        numberOfGuests: Number(formData.numberOfGuests),
         reservationDate: formData.date,
         reservationStartTime: formData.time,
         fk_CustomerId: customerId,
-        fk_TableId: formData.tableId
+        fk_TableId: formData.tableId,
       }),
     });
 
+    const text = await response.text();
+    console.log("API response:", text);
+
     if (!response.ok) throw new Error("Booking failed");
 
-    const result = await response.json();
-    console.log("Reservation confirmed:", result);
-    setPage((currPage) => currPage + 1);
+    return JSON.parse(text);
   } catch (err) {
     console.error(err);
     setError("Something went wrong when confirming your booking.");
+    throw err;
   }
 }

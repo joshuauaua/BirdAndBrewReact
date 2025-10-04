@@ -1,14 +1,12 @@
 import HandleAvailability from "./HandleAvailability";
-import HandleGuest from "./HandleGuest";
 
-
-
-export default function DynamicButtons({
+export default function DynamicFooter({
   page,
   formData,
   setError,
   setTables,
   setPage,
+  handleConfirm,
 }) {
   if (page === 0) {
     return (
@@ -48,10 +46,7 @@ export default function DynamicButtons({
         >
           Go Back
         </button>
-        <button
-          className="btn-primary"
-          onClick={() => HandleGuest(formData, setError, setPage)}
-        >
+        <button className="btn-primary" onClick={handleConfirm}>
           Confirm your booking
         </button>
       </div>

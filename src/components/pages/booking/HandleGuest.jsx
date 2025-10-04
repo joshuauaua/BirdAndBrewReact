@@ -1,7 +1,7 @@
 import HandleConfirm from "./HandleConfirm";
 
-export default async function HandleGuest(formData, setError, setPage) {
-  setError(""); 
+export default async function HandleGuest(formData, setError) {
+  setError("");
 
   try {
     const response = await fetch("http://localhost:5240/api/customers/check", {
@@ -17,16 +17,19 @@ export default async function HandleGuest(formData, setError, setPage) {
 
     const text = await response.text();
     const data = text ? JSON.parse(text) : null;
-    if (!response.ok) throw new Error("Failed to send data");
 
-    if (data && data.customerId) {
-      console.log("Customer ID received:", data.customerId);
-      await HandleConfirm(formData, data.customerId, setError, setPage);
-    } else {
-      throw new Error("No customerId returned from API");
+    if (!response.ok || !data?.customerId) {
+      throw new Error("Failed to retrieve customer ID");
     }
+
+    console.log("Customer ID received:", data.customerId);
+    formData.customerId = data.customerId;
+
+    // Once customer exists, create reservation
+    await HandleConfirm(formData, data.customerId, setError);
   } catch (err) {
     console.error(err);
-    setError("Something went wrong, please try again.");
+    setError(err.message || "Something went wrong, please try again.");
+    throw err;
   }
 }
