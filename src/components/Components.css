@@ -1,0 +1,22 @@
+.logo {
+  position: absolute;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  color: white;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.logo:hover{
+  cursor: pointer;
+}
+
+.footer-text {
+  position: absolute;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  color: white;
+  background-color: transparent;
+  z-index: 1;
+}

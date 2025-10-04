@@ -1,15 +1,14 @@
-import Stepper, { Step } from "../components/pages/booking/Stepper";
 import Form from "../components/pages/booking/Form";
+import "./Booking.css"
+
 
 export default function Booking() {
   return (
     <>
-      <h1>Booking</h1>
-    
 
-
+    <div className ="booking-container">
             <Form />
-
+            </div>
 
     </>
   );

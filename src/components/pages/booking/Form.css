@@ -1,6 +1,42 @@
 
+.form-container{
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
+
 
 
 .progressBar {
   color: blue;
+  background-color: blue;
 }
+
+.btn-primary{
+  background-color: green;
+  color: white;
+  padding: 12px;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+.btn-secondary{
+  background-color: grey;
+  color: white;
+  padding: 12px;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+.btn-primary:hover{
+  cursor: pointer;
+  background-color: rgb(2, 169, 2);
+
+}
+
+
+.form-titles{
+  color: white;
+}
+
+

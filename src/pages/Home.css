@@ -4,15 +4,10 @@
   flex-direction: column;      
   justify-content: center;     
   align-items: center;         
-  min-height: 100vh;           /* take full viewport height */
-  text-align: center;          /* center text alignment */
+  min-height: 100vh;           
+  text-align: center;          
   color: white;
   padding: 2rem;
-}
-
-.logo {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
 }
 
 .tagline {
@@ -22,6 +17,7 @@
 }
 
 .button {
+  text-decoration: none;
   margin: 1rem 0;
   color: white;
   border: 1px solid white;
@@ -35,9 +31,4 @@
   background-color: white;
   color: black;
   cursor: pointer;
-}
-
-.footer-text {
-  font-size: 0.9rem;
-  opacity: 0.8;
 }
