@@ -1,8 +1,9 @@
-import React from "react";
 import HandleAvailability from "./HandleAvailability";
 import HandleGuest from "./HandleGuest";
 
-export default function DynamicFooter({
+
+
+export default function DynamicButtons({
   page,
   formData,
   setError,

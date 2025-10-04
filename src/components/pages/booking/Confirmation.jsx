@@ -7,7 +7,7 @@ export default function Confirmation ({formData, setFormData}) {
 
     <>
 
-    <div className="form-container">
+    <div>
     <h1>Booking Details</h1>
     <p>Name: {formData.firstName}  {formData.lastName}</p>
     <p>Email: {formData.email} </p>

@@ -1,4 +1,4 @@
-import handleConfirm from "./HandleConfirm";
+import HandleConfirm from "./HandleConfirm";
 
 export default async function HandleGuest(formData, setError, setPage) {
   setError(""); 
@@ -21,7 +21,7 @@ export default async function HandleGuest(formData, setError, setPage) {
 
     if (data && data.customerId) {
       console.log("Customer ID received:", data.customerId);
-      await handleConfirm(formData, data.customerId, setError, setPage);
+      await HandleConfirm(formData, data.customerId, setError, setPage);
     } else {
       throw new Error("No customerId returned from API");
     }

@@ -1,26 +1,35 @@
-
+import '/src/pages/Booking.css'
 
 export default function SelectTable({ tables, formData, setFormData }) {
-  const handleSelect = (table) => {
-    setFormData(prev => ({
-      ...prev,
-      tableId: table.id,
-      tableNumber: table.tableNumber
-    }));
+  const handleSelect = (event) => {
+    const selectedId = parseInt(event.target.value, 10);
+    const selectedTable = tables.find((t) => t.id === selectedId);
+
+    if (selectedTable) {
+      setFormData((prev) => ({
+        ...prev,
+        tableId: selectedTable.id,
+        tableNumber: selectedTable.tableNumber,
+      }));
+    }
   };
 
   return (
     <div className="table-select">
       <h3>Select a Table</h3>
-      {tables.map(table => (
-        <button
-          key={table.id}
-          className={`table-btn ${formData.tableId === table.id ? "selected" : ""}`}
-          onClick={() => handleSelect(table)}
-        >
-          Table {table.tableNumber} — Seats {table.capacity}
-        </button>
-      ))}
+
+      <select
+        className="table-dropdown"
+        value={formData.tableId || ""}
+        onChange={handleSelect}
+      >
+        <option value="">-- Choose a table --</option>
+        {tables.map((table) => (
+          <option key={table.id} value={table.id}>
+            Table {table.tableNumber} — Seats {table.capacity}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

@@ -1,19 +1,23 @@
 .logo {
   position: absolute;
+  top: 2rem;                 
+  left: 50%;                  
+  transform: translateX(-50%); 
   font-size: 1.4rem;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
   color: white;
   text-decoration: none;
   z-index: 1;
 }
 
-.logo:hover{
+.logo:hover {
   cursor: pointer;
 }
 
 .footer-text {
   position: absolute;
+  bottom: 2rem;                
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.9rem;
   opacity: 0.8;
   color: white;
