@@ -1,4 +1,5 @@
 import HandleAvailability from "./HandleAvailability";
+import ValidateBooking from "/src/components/helpers/ValidateBooking"
 
 export default function DynamicFooter({
   page,
@@ -46,8 +47,18 @@ export default function DynamicFooter({
         >
           Go Back
         </button>
-        <button className="btn-primary" onClick={handleConfirm}>
-          Confirm your booking
+        <button
+          className="btn-primary"
+          onClick={() => {
+            const errors = ValidateBooking(formData);
+            if (Object.keys(errors).length > 0) {
+              setError(Object.values(errors).join(", "));
+              return;
+            }
+            handleConfirm();
+          }}
+        >
+          Confirm Booking
         </button>
       </div>
     );

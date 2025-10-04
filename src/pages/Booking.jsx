@@ -1,5 +1,5 @@
+import React, { useState } from "react";
 import "./Booking.css";
-import { useState } from "react";
 
 import Availability from "../components/pages/booking/Availability";
 import GuestInfo from "../components/pages/booking/GuestInfo";
@@ -8,7 +8,8 @@ import Confirmation from "../components/pages/booking/Confirmation";
 import DynamicFooter from "../components/pages/booking/DynamicFooter";
 import ConfirmationModal from "../components/pages/booking/ConfirmationModal";
 import HandleGuest from "../components/pages/booking/HandleGuest";
-import Background from "../components/pages/home/Background"
+import Background from "../components/pages/home/Background";
+import ValidateBooking from "../components/helpers/ValidateBooking";
 
 export default function Booking() {
   const [tables, setTables] = useState([]);
@@ -37,69 +38,77 @@ export default function Booking() {
   ];
 
   const PageDisplay = () => {
-    if (page === 0)
-      return <Availability formData={formData} setFormData={setFormData} />;
-    else if (page === 1)
-      return (
-        <SelectTable
-          formData={formData}
-          setFormData={setFormData}
-          tables={tables}
-        />
-      );
-    else if (page === 2)
-      return <GuestInfo formData={formData} setFormData={setFormData} />;
-    else return <Confirmation formData={formData} />;
+    switch (page) {
+      case 0:
+        return <Availability formData={formData} setFormData={setFormData} />;
+      case 1:
+        return (
+          <SelectTable
+            formData={formData}
+            setFormData={setFormData}
+            tables={tables}
+          />
+        );
+      case 2:
+        return <GuestInfo formData={formData} setFormData={setFormData} />;
+      case 3:
+        return <Confirmation formData={formData} />;
+      default:
+        return null;
+    }
   };
 
   const handleConfirmWithModal = async () => {
+    // Validate before confirming
+    const validationErrors = ValidateBooking(formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setError(Object.values(validationErrors).join(", "));
+      return;
+    }
+
+    setError(""); // clear previous errors
+
     try {
-      // First, check or create customer and get their ID
-      await HandleGuest(formData, setError);
-
-      if (!formData.customerId) throw new Error("Customer ID missing");
-
-      setModalMessage("Booking Confirmed ✅🎉");
+      await HandleGuest(formData, setError, setPage);
+      setModalMessage("Booking Confirmed ✅");
       setModalVisible(true);
     } catch (err) {
-      console.error(err);
-      setError(err.message || "Something went wrong when confirming your booking.");
+      console.error("Booking error:", err);
+      setError("Something went wrong when confirming your booking.");
     }
   };
 
   return (
-
     <>
+      <Background />
+      <div className="form-wrapper">
+        <div className="form-container">
+          <div className="form-header">
+            <h1 className="form-titles">{FormTitles[page]}</h1>
+          </div>
 
-    <Background />
-    <div className="form-wrapper">
-      <div className="form-container">
-        <div className="form-header">
-          <h1 className="form-titles">{FormTitles[page]}</h1>
+          <div className="form-body">{PageDisplay()}</div>
+
+          <div className="form-footer">
+            <DynamicFooter
+              page={page}
+              formData={formData}
+              setError={setError}
+              setTables={setTables}
+              setPage={setPage}
+              handleConfirm={handleConfirmWithModal}
+            />
+          </div>
+
+          {error && <p className="error-message">{error}</p>}
         </div>
 
-        <div className="form-body">{PageDisplay()}</div>
-
-        <div className="form-footer">
-          <DynamicFooter
-            page={page}
-            formData={formData}
-            setError={setError}
-            setTables={setTables}
-            setPage={setPage}
-            handleConfirm={handleConfirmWithModal}
-          />
-        </div>
-
-        {error && <p className="error-message">{error}</p>}
+        <ConfirmationModal
+          visible={modalVisible}
+          onClose={() => setModalVisible(false)}
+          message={modalMessage}
+        />
       </div>
-
-      <ConfirmationModal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        message={modalMessage}
-      />
-    </div>
     </>
   );
 }
